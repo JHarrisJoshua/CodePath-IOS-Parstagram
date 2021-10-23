@@ -11,6 +11,8 @@
 		7199A57695665E9173E77BFF /* Pods_ParstagramTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B28D5617144A9D9A6F67D37 /* Pods_ParstagramTests.framework */; };
 		F54E7BBA27223F890056F7BA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54E7BB927223F890056F7BA /* LoginViewController.swift */; };
 		F54E7BBC27223FAD0056F7BA /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54E7BBB27223FAD0056F7BA /* FeedViewController.swift */; };
+		F54E7BBE272451A30056F7BA /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54E7BBD272451A30056F7BA /* CameraViewController.swift */; };
+		F54E7BC127245D1E0056F7BA /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = F54E7BC027245D1E0056F7BA /* AlamofireImage */; };
 		F5FC50FB272236390009A00A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FC50FA272236390009A00A /* AppDelegate.swift */; };
 		F5FC50FD272236390009A00A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FC50FC272236390009A00A /* SceneDelegate.swift */; };
 		F5FC5102272236390009A00A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5FC5100272236390009A00A /* Main.storyboard */; };
@@ -49,6 +51,7 @@
 		DFB578034629090B806DB99F /* Pods_Parstagram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Parstagram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F54E7BB927223F890056F7BA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F54E7BBB27223FAD0056F7BA /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		F54E7BBD272451A30056F7BA /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		F5FC50F7272236390009A00A /* Parstagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parstagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5FC50FA272236390009A00A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5FC50FC272236390009A00A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +74,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EF9DF5925AD48F7701CEFE1 /* Pods_Parstagram.framework in Frameworks */,
+				F54E7BC127245D1E0056F7BA /* AlamofireImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,6 +149,7 @@
 				F5FC50FC272236390009A00A /* SceneDelegate.swift */,
 				F54E7BB927223F890056F7BA /* LoginViewController.swift */,
 				F54E7BBB27223FAD0056F7BA /* FeedViewController.swift */,
+				F54E7BBD272451A30056F7BA /* CameraViewController.swift */,
 				F5FC5100272236390009A00A /* Main.storyboard */,
 				F5FC5103272236400009A00A /* Assets.xcassets */,
 				F5FC5105272236400009A00A /* LaunchScreen.storyboard */,
@@ -188,6 +193,9 @@
 			dependencies = (
 			);
 			name = Parstagram;
+			packageProductDependencies = (
+				F54E7BC027245D1E0056F7BA /* AlamofireImage */,
+			);
 			productName = Parstagram;
 			productReference = F5FC50F7272236390009A00A /* Parstagram.app */;
 			productType = "com.apple.product-type.application";
@@ -263,6 +271,9 @@
 				Base,
 			);
 			mainGroup = F5FC50EE272236390009A00A;
+			packageReferences = (
+				F54E7BBF27245D1E0056F7BA /* XCRemoteSwiftPackageReference "alamofireimage" */,
+			);
 			productRefGroup = F5FC50F8272236390009A00A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -410,6 +421,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F54E7BBA27223F890056F7BA /* LoginViewController.swift in Sources */,
+				F54E7BBE272451A30056F7BA /* CameraViewController.swift in Sources */,
 				F5FC50FB272236390009A00A /* AppDelegate.swift in Sources */,
 				F54E7BBC27223FAD0056F7BA /* FeedViewController.swift in Sources */,
 				F5FC50FD272236390009A00A /* SceneDelegate.swift in Sources */,
@@ -782,6 +794,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F54E7BBF27245D1E0056F7BA /* XCRemoteSwiftPackageReference "alamofireimage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/alamofire/alamofireimage";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F54E7BC027245D1E0056F7BA /* AlamofireImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F54E7BBF27245D1E0056F7BA /* XCRemoteSwiftPackageReference "alamofireimage" */;
+			productName = AlamofireImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F5FC50EF272236390009A00A /* Project object */;
 }
