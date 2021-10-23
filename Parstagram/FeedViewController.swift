@@ -20,7 +20,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     let myRefreshControl = UIRefreshControl()
     
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,6 +30,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource = self
         tableView.rowHeight = 400
         
+        numberofPhotos = 20
         loadPhotos()
         
         myRefreshControl.addTarget(self, action: #selector(onRefresh), for: .valueChanged)
@@ -48,49 +49,59 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         query.limit = numberofPhotos
         query.findObjectsInBackground { (posts, error) in
             if posts != nil {
+                self.posts.removeAll()
                 self.posts = posts!
                 self.tableView.reloadData()
             }
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    //override func viewDidAppear(_ animated: Bool) {
+    //    super.viewDidAppear(animated)
+    //
+    //    if numberofPhotos == nil {
+    //        numberofPhotos = 20
+    //    }
         
-        if numberofPhotos == nil {
-            numberofPhotos = 20
-        }
+    //    let query = PFQuery(className: "Posts")
+    //    query.includeKey("author")
+    //    query.limit = numberofPhotos
+    //    query.findObjectsInBackground { (posts, error) in
+    //        if posts != nil {
+    //            self.posts = posts!
+    //            self.tableView.reloadData()
+    //        }
+    //    }
+
         
+    //}
+    
+    func loadMorePhotos() {
+        
+        numberofPhotos = numberofPhotos + 20
         let query = PFQuery(className: "Posts")
         query.includeKey("author")
         query.limit = numberofPhotos
         query.findObjectsInBackground { (posts, error) in
             if posts != nil {
+                self.posts.removeAll()
                 self.posts = posts!
                 self.tableView.reloadData()
-            }
-        }
-
-        
-    }
-    
-    func loadMorePhotos() {
-        
-        numberofPhotos = numberofPhotos + 20
-        loadPhotos()
         self.tableView.reloadData()
         
+    }
+        }
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
+        return self.posts.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
-        let post = posts[indexPath.row]
+        let post = self.posts[indexPath.row]
         let user = post["author"] as! PFUser
         cell.usernameLabel.text = user.username
         
@@ -105,14 +116,18 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     
-    @objc func onRefresh() {
-        numberofPhotos = 20
-        loadPhotos()
+   @objc func onRefresh() {
+        self.numberofPhotos = 20
+        self.loadPhotos()
         self.tableView.reloadData()
         self.myRefreshControl.endRefreshing()
     }
     
-    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row + 1 == posts.count {
+            loadMorePhotos()
+        }
+    }
     
     
     
